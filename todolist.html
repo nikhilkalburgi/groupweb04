@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>TO-DO LIST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+      *{
+        box-sizing:border-box;
+      }
+
+      /* styling the body */
+      body{
+        margin:0px;
+        box-sizing:border-box;
+        background-color:white;
+        text-align:center;
+      }
+
+    /* styling the todo list */
+    #result  section{
+        width:50%;
+      margin:auto;
+      margin-top:50px;
+        background-image:url('doodle.jpg');
+        background-size:100%;
+        background-position:center;
+        box-shadow:2px 2px 6px;
+       padding:0px;
+      }
+
+      /* styling the illustration to-do list */
+      figure   section{
+        width:50%;
+      margin:auto;
+      margin-top:20px;
+        background-image:url('doodle.jpg');
+        background-size:100%;
+        background-position:center;
+        box-shadow:2px 2px 15px;
+       padding:0px;
+      }
+      #result main{
+        margin:0px;
+        background-color:rgba(255,255,255,0.75);
+        width:100%;
+      }
+      figure  main{
+        margin:0px;
+        background-color:rgba(255,255,255,0.75);
+        width:100%;
+      }
+
+    /* styling the input text box to add the task in list */
+   input[type="text"]{
+        width:400px;
+        height:50px;
+        margin:5vh;
+        font-size:4vh;
+        padding:2px;
+        text-align:center;
+        color:black;
+        border-radius:50px;
+        outline:0px;
+        border:0px;
+        box-shadow:2px 2px 10px black;
+      }
+      input[type="demo_text"]{
+           width:100px;
+           height:30px;
+           margin:5vh;
+           font-size:3vh;
+           padding:2px;
+           text-align:center;
+           color:black;
+           border-radius:50px;
+           outline:0px;
+           border:0px;
+           box-shadow:2px 2px 3px black;
+         }
+
+/* creating the button to add */
+    #result  button{
+        width:50px;
+        height:50px;
+        border-radius:100px;
+        background:white;
+        font-size:40px;
+        font-weight:bold;
+        position:relative;
+        top:5px;
+        border:0px;
+        outline:0px;
+        box-shadow:2px 2px 10px black;
+        cursor:pointer;
+      }
+      figure   button{
+          width:30px;
+          height:30px;
+          border-radius:100px;
+          background:white;
+          font-size:30px;
+          font-weight:bold;
+          position:relative;
+          top:5px;
+          border:0px;
+          outline:0px;
+          box-shadow:2px 2px 10px black;
+          cursor:pointer;
+        }
+
+ /* adding the heading to the list */
+      h1{
+        text-align:center;
+        font-size:5vh;
+        margin:0px;
+        padding:30px;
+        text-shadow: 2px 2px 10px;
+        letter-spacing: 4px;
+      }
+      main > div{
+        padding:20px;
+        border-top:1px solid;
+        font-size:6vh;
+        font-style:italic;
+        overflow:hidden;
+        display:flex;
+        text-shadow: none;
+      }
+
+      /* making a close btn */
+      .close{
+        float:right;
+        font-style:normal;
+        font-size:3vh;
+        height:4vh;
+        margin:5px;
+        font-family: sans-serif;
+        cursor:pointer;
+        width:5%;
+        }
+
+        /* mentioning the date to the tasks */
+      .date{
+        float:left;
+        width:30%;
+        font-size:2vh;
+        height:4vh;
+        margin:5px;
+        margin-left: -4px;
+        font-weight: bold;
+      }
+      p{
+        display:inline-block;
+        width:70%;
+        margin:0px;
+        text-shadow:0px 0px 20px white,0px 0px 40px white,0px 0px 40px white;
+        letter-spacing: 4px;
+        margin-left:-30px;
+        font-weight: bold;
+      }
+
+   /* creating a form to design our todo list */
+      form{
+        display: inline-block;
+        text-align: left;
+        width:50%;
+        border-radius: 10px;
+        box-shadow: 2px 2px 20px grey;
+        margin:10px;
+        font-family: sans-serif;
+      }
+    form  input{
+        display:inline;
+        margin:3%;
+        transform: scale(1.5);
+      }
+
+    form .main{
+        width:100%;
+        /* height:110px; */
+        margin-bottom:3%;
+        overflow-y: hidden;
+      }
+
+/* adding colors option to the form division */
+      .color{
+        display:flex;
+        flex-direction: row;
+        height:100px;
+       overflow: hidden;
+       width:1200px;
+       text-align: center;
+      }
+
+      .color > div{
+        width:400px;
+        margin:10px;
+      }
+
+      .color > div:hover {
+        padding:2px;
+        box-shadow:2px 2px 18px black;
+      }
+
+ /* adding some image options to the form */
+      .graphics{
+        width:1370px;
+        display:flex;
+        flex-direction: row;
+        height:100px;
+        display:none;
+      }
+
+      .graphics > img{
+        width:150px;
+        margin:10px;
+      }
+
+      .graphics > img:hover {
+        padding:2px;
+        box-shadow:2px 2px 18px black;
+      }
+      label{
+        margin:2%;
+        font-weight: 500;
+        font-size: 30px;
+      }
+
+      /* set the font style option */
+      select{
+        width:50%;
+        margin:2%;
+        height:40px;
+        background-color: #ddd;
+      }
+
+      input[type='button']{
+        padding:10px;
+        margin-left: 25px;
+      }
+      input[type='reset']{
+        padding:10px;
+        float:right;
+        margin-right: 25px;
+      }
+
+      input[type='radio']:after{
+      width:15px;
+      height:15px;
+      border-radius:15px;
+      top:-5px;
+      left:0px;
+      position:relative;
+      background-color:#d1d3d1;
+      content:'';
+      display:inline-block;
+      visibility:visible;
+      border:2px solid white;
+      }
+      input[type='radio']:checked:after{
+        width:15px;
+        height:15px;
+        border-radius:15px;
+        top:-5px;
+        left:-1px;
+        position:relative;
+        background-color:#ffa500;
+        content:'';
+        display:inline-block;
+        visibility: :visible;
+        border:2px solid white;
+        box-shadow:0px 0px 6px;
+      }
+      form > h2{
+        font-size: 30px;
+        margin:1%;
+      }
+
+/* hiding the scroll bar */
+      ::-webkit-scrollbar {
+  width: 0px;
+}
+
+.graphics img{
+  object-fit: contain;
+}
+
+form .status{
+  float:right;
+  border:solid ;
+  width:70px;
+  height:50px;
+  margin:10px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+#result{height:100vh;
+ background-repeat:no-repeat;
+ background-position: center;
+ background-size: cover;
+ display:none;
+ overflow: auto;
+}
+#demo_result{
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size: cover;
+   overflow: auto;
+   border:solid;
+   height:400px;
+}
+
+
+/* responsive designing */
+@media all and (max-width:700px){
+  form{
+    width:90%;
+    padding:10px;
+    text-align:left;
+  }
+  form input[type='button']{
+     float:left;
+     margin-left:8%;
+  }
+  form>select{
+    width:90%;
+    margin:5%;
+  }
+  form input[type='radio']{
+    margin:5%;
+  }
+  label{
+    font-size: 3vh;
+    margin: 2%;
+  }
+  form > h2{
+    font-size: 3vh;
+  }
+  #result > input{
+    width:70%;
+    margin:2%;
+  }
+
+  #result  section{
+    width:90%;
+  }
+  #demo_result  section{
+    width:90%;
+  }
+
+}
+figure{
+  height:400px;
+  border:solid;
+  text-align: center;
+}
+    </style>
+  </head>
+
+  <body>
+
+     <!-- designing a form element to configure a to-do list -->
+    <form>
+      <h1>DESIGN YOUR To - Do List</h1><hr>
+
+      <!-- background designing -->
+      <h2>Set your background :</h2><br><div class='status'></div>
+      <input type='radio' name='background' value='color' onclick='display_back();' checked><label>Color</label><br>
+      <input type='radio' name='background' onclick='display_back_graph();'><label>Graphics</label>
+      <div class='main'>
+         <div class='color'>
+            <div style='background:#f1d115' data-color='#f1d115'>1</div>
+            <div style='background:#155df1' data-color='#155df1'>2</div>
+            <div style='background:#f11575' data-color='#f11575'>3</div>
+            <div style='background:#27f115' data-color='#27f115'>4</div>
+            <div style='background:#f14315' data-color='#f14315'>5</div>
+            <div style='background:#15f1ed' data-color='#15f1ed'>6</div>
+            <div style='background:#f3a10a' data-color='#f3a10a'>7</div>
+            <div style='background:#8f06f7' data-color='#8f06f7'>8</div>
+         </div>
+         <div class='graphics'>
+           <img src='universe.jpg' alt="1">
+           <img src='worldmap.jpg' alt="2">
+           <img src='slider-v1704.jpg' alt="3">
+           <img src='28f68aab.jpg' alt="4">
+           <img src='shutterstock_1010214562.jpg' alt="5">
+           <img src='marketing_idea.jpg' alt="6">
+           <img src='Cool-3D-Nature-HQ.jpg' alt="7">
+           <img src='3d-photoshop.jpg' alt="8">
+         </div>
+      </div>
+<hr>
+
+<!-- foreground designing -->
+      <h2>Set your Foreground :</h2><br><div class='status'></div>
+      <input type='radio' name='fore' onclick='display_fore();' checked><label>Color</label><br>
+      <input type='radio' name='fore' onclick='display_fore_graph();'><label>Graphics</label>
+      <div class='main'>
+        <div class='color'>
+          <div style='background:#f1d115;opacity:0.5;' data-color='#f1d115'>1</div>
+          <div style='background:#f11575 ;opacity:0.5;' data-color='#f11575'>3</div>
+          <div style='background:#155df1 ;opacity:0.5;' data-color='#155df1'>2</div>
+          <div style='background:#27f115 ;opacity:0.5;' data-color='#27f115'>4</div>
+          <div style='background:#f14315 ;opacity:0.5;' data-color='#f14315'>5</div>
+          <div style='background:#15f1ed ;opacity:0.5;' data-color='#15f1ed'>6</div>
+          <div style='background:#27f115 ;opacity:0.5;' data-color='#27f115'>7</div>
+          <div style='background:#8f06f7 ;opacity:0.5;' data-color='#8f06f7'>8</div>
+        </div>
+        <div class='graphics'>
+          <img src='doodle.jpg' alt=" ">
+          <img src='50148399-old.jpg' alt="">
+          <img src='OIP.jpg' alt="">
+          <img src='OIP (1).jpg' alt="">
+          <img src='images.jpg' alt="">
+          <img src='crop.jpg' alt="">
+          <img src='corona-virus.jpg' alt="">
+          <img src='shutterstock_1010214562.jpg' alt="">
+        </div>
+      </div>
+<hr>
+
+<!-- font style designing -->
+      <h2>Set font style :</h2><br>
+      <select>
+        <option>sans-serif</option>
+        <option>century</option>
+        <option>chiller</option>
+        <option>calibri</option>
+        <option>centaur</option>
+        <option selected>monoscope</option>
+        <option>forte</option>
+        <option>Ink Free</option>
+      </select><br>
+
+    <!-- illustration box -->
+      <figure>
+        <div id='demo_result'>
+           <input type="demo_text" name="agenda"><button type="demo_button" name="button" disabled>></button>
+           <section id='demo_catalog'>
+              <main>
+                 <h1 style='font-size:2vh;'>To - Do List</h1>
+              </main>
+           </section>
+       <div>
+      </figure>
+
+ <!-- create and reset btn -->
+      <input type='button' value='Create' onclick="create()">
+      <input id='reset' type='reset' value='Reset'>
+    </form>
+
+
+    <!-- our to-do list -->
+
+ <div id='result'>
+    <input type="text" name="agenda"><button type="button" name="button" onclick='addon();'>></button>
+    <section id='catalog'>
+       <main>
+          <h1>To - Do List</h1>
+       </main>
+    </section>
+<div>
+  </body>
+  <script type="text/javascript">
+    var i=0;
+
+ // adding the tasks to the todo list
+    function addon(){
+       var d=new Date();
+       var close = document.createElement('span');
+       close.className='close';
+       close.innerHTML='X';
+       close.setAttribute('onclick','erase(this.parentNode);');
+
+       var date = document.createElement('span');
+       date.className='date';
+       date.innerHTML=d.toLocaleString();
+
+       var p = document.createElement('p');
+       p.innerHTML=document.querySelectorAll('#result input')[0].value;
+
+
+       var block = document.createElement('div');
+       block.appendChild(date);
+       block.appendChild(p);
+       block.appendChild(close)
+      document.getElementsByTagName('main')[1].appendChild(block);
+      document.querySelector('#result input').value='';
+    }
+
+
+// deleting the tasks from the list
+    function erase(e){
+      document.getElementsByTagName('main')[1].removeChild(e);
+    }
+
+// displaying the colors or graphics option alternatively on click of radio btn
+    function display_back(){
+      document.querySelectorAll('.color')[0].style.display='flex';
+      document.querySelectorAll('.graphics')[0].style.display='none';
+    }
+    function display_fore(){
+      document.querySelectorAll('.color')[1].style.display='flex';
+      document.querySelectorAll('.graphics')[1].style.display='none';
+    }
+    function display_back_graph(){
+      document.querySelectorAll('.color')[0].style.display='none';
+      document.querySelectorAll('.graphics')[0].style.display='flex';
+    }
+    function display_fore_graph(){
+      document.querySelectorAll('.color')[1].style.display='none';
+      document.querySelectorAll('.graphics')[1].style.display='flex';
+    }
+
+  // setting the looks of the background and the list
+    document.getElementsByClassName('main')[0].addEventListener('click',(e)=>{
+      if(e.path[0].nodeName == 'DIV'){
+        document.getElementById('result').style.backgroundColor=e.target.dataset.color;
+        document.getElementById('demo_result').style.backgroundColor=e.target.dataset.color;
+        document.getElementsByClassName('status')[0].style.backgroundColor=e.target.dataset.color;
+      }else{
+        document.getElementById('result').style.backgroundImage='url("'+ e.target.src +'")';
+        document.getElementById('demo_result').style.backgroundImage='url("'+ e.target.src +'")';
+        document.getElementsByClassName('status')[0].style.backgroundImage='url("'+ e.target.src +'")';
+      }
+    });
+   document.getElementsByClassName('main')[1].addEventListener('click',(e)=>{
+      if(e.path[0].nodeName == 'DIV'){
+        document.getElementById('catalog').style.background=e.target.dataset.color;
+        document.getElementById('demo_catalog').style.background=e.target.dataset.color;
+        document.getElementsByClassName('status')[1].style.backgroundColor=e.target.dataset.color;
+      }else{
+        document.getElementById('catalog').style.backgroundImage='url("'+ e.target.src +'")';
+        document.getElementById('demo_catalog').style.backgroundImage='url("'+ e.target.src +'")';
+        document.getElementsByClassName('status')[1].style.backgroundImage='url("'+ e.target.src +'")';
+      }
+    });
+
+    // font style change
+
+    document.getElementsByTagName('select')[0].addEventListener('change',(e)=>{
+      document.getElementById('result').style.fontFamily=e.target.value;
+      console.log(e.target.value)
+      document.getElementById('demo_result').style.fontFamily=e.target.value;
+    });
+
+    // creating the to-do list
+
+     function create(){
+       document.getElementById('result').style.display='block';
+       document.getElementsByTagName('form')[0].style.display='none';
+     }
+
+
+  // reset the list appearance
+
+     document.getElementById('reset').addEventListener('click',()=>{
+       document.getElementById('catalog').style.backgroundImage='url("doodle.jpg")';
+       document.getElementById('demo_catalog').style.backgroundImage='url("doodle.jpg")';
+       document.getElementById('catalog').style.backgroundSize='100&';
+       document.getElementById('demo_catalog').style.backgroundSize='100%';
+       document.getElementById('result').style.background='white';
+       document.getElementById('demo_result').style.background='white';
+       document.getElementsByClassName('status')[0].style.background="white";
+       document.getElementsByClassName('status')[1].style.background="white";
+     });
+  </script>
+</html>
